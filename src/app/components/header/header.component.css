@@ -1,0 +1,14 @@
+header {
+  height: 70px;
+  background: #040722;
+}
+h1 {
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  color: #ffffff;
+  margin-left: 6.66vw;
+  padding-top: 35px;
+}
