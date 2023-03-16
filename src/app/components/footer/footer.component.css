@@ -1,0 +1,26 @@
+footer {
+  background: #040722;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav {
+  display: flex;
+  gap: 6.44vw;
+}
+a {
+  width: 65.86px !important;
+  height: 65.86px !important;
+  border-radius: 50%;
+  background: #88e7a1;
+
+  position: relative;
+}
+img {
+  position: absolute;
+  width: 30.63px;
+  height: 30.63px;
+  top: 25%;
+  right: 25%;
+}
