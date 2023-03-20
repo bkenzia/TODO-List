@@ -1,7 +1,17 @@
 <footer>
   <nav>
-    <a href=""><img src="../../../assets/img/listTache.png" alt="" /></a>
-    <a href=""><img src="../../../assets/img/plus.png" alt="" /></a>
+    <a
+      routerLink="list-taches"
+      [ngClass]="{
+        'bg-green': this.url === '/' || this.url === '/list-taches'
+      }"
+      ><img src="../../../assets/img/listTache.png" alt=""
+    /></a>
+    <a
+      routerLink="/ajouter-une-tache"
+      [ngClass]="{ 'bg-yellow': this.url === '/ajouter-une-tache' }"
+      ><img src="../../../assets/img/plus.png" alt=""
+    /></a>
     <a href=""><img src="../../../assets/img/historiqueList.png" alt="" /></a>
   </nav>
 </footer>

@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 html,
 body,
 div,
@@ -123,3 +124,5 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Lato&family=Nunito+Sans:wght@300;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&family=Quicksand:wght@700&family=Roboto:wght@400;700&display=swap");
