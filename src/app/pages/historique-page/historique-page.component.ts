@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ITodo } from 'src/app/mocks/taches.mock';
 
 @Component({
@@ -8,9 +9,9 @@ import { ITodo } from 'src/app/mocks/taches.mock';
 })
 export class HistoriquePageComponent {
   listTacheHistorique: ITodo[] = [];
+  constructor(private router: Router) {}
   ngOnInit() {
     this.getValidateTaches();
-    console.log('historique taches', this.getValidateTaches());
   }
   getValidateTaches() {
     this.listTacheHistorique = [];
@@ -24,7 +25,9 @@ export class HistoriquePageComponent {
           this.listTacheHistorique.push(element);
         }
       });
-      console.log('historique taches', this.listTacheHistorique);
+      if (this.listTacheHistorique.length == 0) {
+        this.router.navigate(['']);
+      }
     }
   }
   private createTaches() {

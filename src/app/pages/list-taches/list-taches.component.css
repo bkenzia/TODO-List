@@ -1,5 +1,5 @@
 main {
-  height: 73.12vh;
+  height: 74.13vh;
   background: #040722;
   font-family: "Quicksand";
   font-style: normal;
@@ -49,4 +49,8 @@ li {
 }
 .icon {
   object-fit: contain;
+}
+.contenu-tache {
+  width: 70%;
+  word-wrap: break-word;
 }

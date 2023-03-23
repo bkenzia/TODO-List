@@ -9,19 +9,37 @@ import { ITodo } from 'src/app/mocks/taches.mock';
 })
 export class HommePageComponent {
   listTaches: ITodo[] = [];
+  listTachesUrgent: ITodo[] = [];
+  listTachesNoUrgent: ITodo[] = [];
   constructor(private router: Router) {}
   ngOnInit() {
     this.getTaches();
-    console.log('list taches', this.listTaches);
   }
   ajouterTache() {
     this.router.navigate(['ajouter-une-tache']);
   }
+  // getTaches() {
+  //   // console.log('valeur number localstorage', localStorage.getItem('number'));
+  //   let taches = localStorage.getItem('taches');
+  //   if (taches) {
+  //     this.listTaches = JSON.parse(taches);
+  //   }
+  // }
+
   getTaches() {
     // console.log('valeur number localstorage', localStorage.getItem('number'));
     let taches = localStorage.getItem('taches');
     if (taches) {
-      this.listTaches = JSON.parse(taches);
+      const listTaches = JSON.parse(taches);
+
+      listTaches.forEach((element: ITodo) => {
+        if (element.isUrgent == true && element.doneDate == null) {
+          this.listTachesUrgent.push(element);
+        } else if (element.doneDate == null) {
+          this.listTachesNoUrgent.push(element);
+        }
+      });
+      console.log('this.listTachesNoUrgent', this.listTachesNoUrgent);
     }
   }
 }

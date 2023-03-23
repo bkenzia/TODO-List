@@ -9,6 +9,9 @@
     >
       <p class="update" (click)="validateTache(urgente.id)">
         <img
+          [ngClass]="{
+            'display-none': urgente.doneDate == null
+          }"
           class="update-img"
           src="../../../assets/icon-categories/check_icon.png"
           alt=""
@@ -19,16 +22,30 @@
         src="../../../assets/icon-categories/{{ urgente.category }}.png"
         alt=""
       />
-      <p routerLink="/tache/{{ urgente.id }}">
+      <p routerLink="/tache/{{ urgente.id }}" class="contenu-tache">
         {{ urgente.content }}
       </p>
     </li>
   </ul>
-  <h2 *ngIf="listTachesNoUrgent.length != 0">🌸 Tâches non urgentes</h2>
+  <h2
+    [ngClass]="{
+      'display-none': listTachesNoUrgent.length == 0
+    }"
+  >
+    🌸 Tâches non urgentes
+  </h2>
   <ul>
-    <li *ngFor="let noUrgente of listTachesNoUrgent">
-      <p class="update">
+    <li
+      *ngFor="let noUrgente of listTachesNoUrgent"
+      [ngClass]="{
+        'display-none': noUrgente.doneDate != null
+      }"
+    >
+      <p class="update" (click)="validateTache(noUrgente.id)">
         <img
+          [ngClass]="{
+            'display-none': noUrgente.doneDate == null
+          }"
           class="update-img"
           src="../../../assets/icon-categories/check_icon.png"
           alt=""
@@ -39,8 +56,9 @@
         src="../../../assets/icon-categories/{{ noUrgente.category }}.png"
         alt=""
       />
-      <p routerLink="/tache/{{ noUrgente.id }}">{{ noUrgente.content }}</p>
+      <p routerLink="/tache/{{ noUrgente.id }}" class="contenu-tache">
+        {{ noUrgente.content }}
+      </p>
     </li>
   </ul>
-  <button>Créer une tâche</button>
 </main>

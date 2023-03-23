@@ -10,28 +10,35 @@ import { ITodo } from 'src/app/mocks/taches.mock';
 export class ListTachesComponent {
   listTachesUrgent: ITodo[] = [];
   listTachesNoUrgent: ITodo[] = [];
+  validateTaches: ITodo[] = [];
   constructor(private router: Router, private activatedRout: ActivatedRoute) {}
   ngOnInit() {
     this.activatedRout.params.subscribe((routeParams) => {
       this.getTaches();
-      // console.log('test found tache ', this.tacheFound);
     });
-
-    console.log('date aujourduit', new Date().toLocaleDateString());
   }
   getTaches() {
-    // console.log('valeur number localstorage', localStorage.getItem('number'));
     let taches = localStorage.getItem('taches');
+
     if (taches) {
       const listTaches = JSON.parse(taches);
 
       listTaches.forEach((element: ITodo) => {
-        if (element.isUrgent == true) {
+        if (element.isUrgent == true && element.doneDate == null) {
           this.listTachesUrgent.push(element);
-        } else {
+        } else if (element.doneDate == null) {
           this.listTachesNoUrgent.push(element);
         }
       });
+
+      if (
+        this.listTachesUrgent.length == 0 &&
+        this.listTachesNoUrgent.length == 0
+      ) {
+        this.router.navigate(['']);
+      }
+    } else {
+      this.router.navigate(['']);
     }
   }
   private createTaches() {
@@ -61,8 +68,8 @@ export class ListTachesComponent {
       );
 
       tacheFound.doneDate = new Date().toLocaleDateString();
-      console.log('tache valider', tacheFound);
-      console.log('taches', typeof taches);
+
+      this.validateTaches.push(tacheFound);
       const listTaches = this.getListTaches();
       listTaches.forEach((element) => {
         if (tacheFound?.id == element.id) {

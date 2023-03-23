@@ -25,7 +25,6 @@ export class AjouterLaTacheComponent {
     this.listTaches;
     this.activatedRout.params.subscribe((routeParams) => {
       this.getTacheFound();
-      console.log('test found tache ', this.tacheFound);
     });
     this.updateTache();
   }
@@ -53,7 +52,7 @@ export class AjouterLaTacheComponent {
     this.tache.id = taches.length + 1;
     taches.push(tache);
     this.savetaches(taches);
-    this.router.navigate(['list-taches']);
+    this.router.navigate(['']);
   }
 
   public getTaches(): ITodo[] {
@@ -87,25 +86,20 @@ export class AjouterLaTacheComponent {
     const id = Number(this.activatedRout.snapshot.paramMap.get('id'));
 
     if (id && this.tacheFound) {
-      console.log('id if', id);
-
       this.mytextarea = this.tacheFound.content;
-
-      console.log(this.mytextarea);
     }
   }
   addUpdateTache(tache: ITodo) {
-    console.log(this.tacheFound);
     const taches = this.getTaches();
-    console.log('list-tache', taches);
+
     taches.forEach((element) => {
       if (this.tacheFound?.id == element.id) {
         element.content = tache.content;
-        element.category = tache.category;
+        element.category = this.tacheFound.category;
         element.isUrgent = tache.isUrgent;
       }
     });
     this.savetaches(taches);
-    this.router.navigate(['list-taches']);
+    this.router.navigate(['']);
   }
 }

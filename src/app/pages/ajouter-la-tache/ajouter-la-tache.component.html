@@ -39,7 +39,8 @@
           alt=""
           [ngClass]="{
             'display-non':
-              tache.isUrgent == false || tacheFound?.isUrgent == false
+              (tache.isUrgent == false && tacheFound?.isUrgent == false) ||
+              (tache.isUrgent == false && tacheFound == null)
           }"
         />
       </p>
