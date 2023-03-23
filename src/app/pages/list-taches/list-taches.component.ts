@@ -10,9 +10,14 @@ import { ITodo } from 'src/app/mocks/taches.mock';
 export class ListTachesComponent {
   listTachesUrgent: ITodo[] = [];
   listTachesNoUrgent: ITodo[] = [];
-  constructor(private router: Router) {}
+  constructor(private router: Router, private activatedRout: ActivatedRoute) {}
   ngOnInit() {
-    this.getTaches();
+    this.activatedRout.params.subscribe((routeParams) => {
+      this.getTaches();
+      // console.log('test found tache ', this.tacheFound);
+    });
+
+    console.log('date aujourduit', new Date().toLocaleDateString());
   }
   getTaches() {
     // console.log('valeur number localstorage', localStorage.getItem('number'));
@@ -29,17 +34,42 @@ export class ListTachesComponent {
       });
     }
   }
+  private createTaches() {
+    const newTaches: [] = [];
+    const stringifyTaches = JSON.stringify(newTaches);
+    localStorage.setItem('taches', stringifyTaches);
+  }
+  private savetaches(listTaches: ITodo[]) {
+    localStorage.setItem('taches', JSON.stringify(listTaches));
+  }
+  public getListTaches(): ITodo[] {
+    const listTaches = localStorage.getItem('taches');
 
-  // updateTache(id: number) {
-  //   console.log('id', id);
-  //   let taches = localStorage.getItem('taches');
+    if (listTaches) {
+      return JSON.parse(listTaches);
+    } else {
+      this.createTaches();
+      return this.getListTaches();
+    }
+  }
 
-  //   if (taches) {
-  //     const tacheFound = JSON.parse(taches).find(
-  //       (tache: ITodo) => tache.id === id
-  //     );
-  //     console.log('tacheFound', tacheFound);
-  //     this.router.navigate(['ajouter-une-tache']);
-  //   }
-  // }
+  validateTache(id: number) {
+    let taches = localStorage.getItem('taches');
+    if (taches) {
+      const tacheFound = JSON.parse(taches).find(
+        (tache: ITodo) => tache.id === id
+      );
+
+      tacheFound.doneDate = new Date().toLocaleDateString();
+      console.log('tache valider', tacheFound);
+      console.log('taches', typeof taches);
+      const listTaches = this.getListTaches();
+      listTaches.forEach((element) => {
+        if (tacheFound?.id == element.id) {
+          element.doneDate = tacheFound.doneDate;
+        }
+      });
+      this.savetaches(listTaches);
+    }
+  }
 }

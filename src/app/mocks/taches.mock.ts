@@ -14,3 +14,26 @@ export interface ITodo {
   isUrgent: boolean;
   doneDate: Date | null;
 }
+export interface ICategorie {
+  categorie: CategoryType;
+}
+export const CATEGORIES: ICategorie[] = [
+  {
+    categorie: 'shopping',
+  },
+  {
+    categorie: 'health',
+  },
+  {
+    categorie: 'work',
+  },
+  {
+    categorie: 'bills',
+  },
+  {
+    categorie: 'cleaning',
+  },
+  {
+    categorie: 'other',
+  },
+];

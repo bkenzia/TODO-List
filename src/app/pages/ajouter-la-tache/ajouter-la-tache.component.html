@@ -3,60 +3,18 @@
     <h2>Sélectionnez votre catégorie* :</h2>
     <div class="icon-categories flex">
       <p
-        (click)="getCategorie('shopping')"
+        *ngFor="let item of categories"
+        (click)="getCategorie(item.categorie)"
         [ngClass]="{
           'bg-yellow':
-            this.tache.category === 'shopping' ||
-            this.tacheFound?.category === 'shopping'
+            this.tache.category === item.categorie ||
+            this.tacheFound?.category === item.categorie
         }"
       >
-        <img src="../../../assets/icon-categories/shopping.png" alt="" />
-      </p>
-      <p
-        (click)="getCategorie('health')"
-        [ngClass]="{
-          'bg-yellow':
-            this.tache.category === 'health' ||
-            this.tacheFound?.category === 'health'
-        }"
-      >
-        <img src="../../../assets/icon-categories/health.png" alt="" />
-      </p>
-      <p
-        (click)="getCategorie('work')"
-        [ngClass]="{
-          'bg-yellow':
-            this.tache.category === 'work' ||
-            this.tacheFound?.category === 'work'
-        }"
-      >
-        <img src="../../../assets/icon-categories/work.png" alt="" />
-      </p>
-      <p
-        (click)="getCategorie('bills')"
-        [ngClass]="{
-          'bg-yellow':
-            this.tache.category === 'bills' ||
-            this.tacheFound?.category === 'bills'
-        }"
-      >
-        <img src="../../../assets/icon-categories/bills.png" alt="" />
-      </p>
-      <p
-        (click)="getCategorie('cleaning')"
-        [ngClass]="{
-          'bg-yellow':
-            this.tache.category === 'cleaning' ||
-            this.tacheFound?.category === 'cleaning'
-        }"
-      >
-        <img src="../../../assets/icon-categories/cleaning.png" alt="" />
-      </p>
-      <p
-        (click)="getCategorie('other')"
-        [ngClass]="{ 'bg-yellow': this.tache.category === 'other' }"
-      >
-        <img src="../../../assets/icon-categories/other.png" alt="" />
+        <img
+          src="../../../assets/icon-categories/{{ item.categorie }}.png"
+          alt=""
+        />
       </p>
     </div>
     <h2>Quelle tâche avez vous à effectuer* ?</h2>
@@ -69,11 +27,20 @@
     ></textarea>
 
     <div class="flex urgent-div">
-      <p class="Urgent" (click)="getUrgentTache()">
+      <p
+        class="Urgent"
+        (click)="getUrgentTache()"
+        [ngClass]="{
+          'bg-move': tache.isUrgent == true || tacheFound?.isUrgent == true
+        }"
+      >
         <img
           src="../../../assets/icon-categories/check_icon.png"
           alt=""
-          [ngClass]="{ 'display-non': tache.isUrgent == false }"
+          [ngClass]="{
+            'display-non':
+              tache.isUrgent == false || tacheFound?.isUrgent == false
+          }"
         />
       </p>
       <h2>La tâche est urgente ⚠️</h2>

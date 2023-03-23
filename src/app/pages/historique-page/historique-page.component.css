@@ -23,6 +23,17 @@ main {
   /* border-radius: 6px; */
   background: #f3d24f;
 }
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+li {
+  display: flex;
+  gap: 15px;
+}
+
 .update {
   width: 23px;
   height: 23px;
@@ -34,18 +45,6 @@ main {
   position: absolute;
   top: 22%;
   left: 22%;
-}
-ul {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-li {
-  display: flex;
-  gap: 15px;
-}
-.display-none {
-  display: none;
 }
 .icon {
   object-fit: contain;

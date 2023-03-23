@@ -1,8 +1,13 @@
 <main>
   <h2 *ngIf="listTachesUrgent.length != 0">⚠️ La tâche est urgente</h2>
   <ul>
-    <li *ngFor="let urgente of listTachesUrgent">
-      <p class="update">
+    <li
+      *ngFor="let urgente of listTachesUrgent"
+      [ngClass]="{
+        'display-none': urgente.doneDate != null
+      }"
+    >
+      <p class="update" (click)="validateTache(urgente.id)">
         <img
           class="update-img"
           src="../../../assets/icon-categories/check_icon.png"
@@ -10,10 +15,13 @@
         />
       </p>
       <img
+        class="icon"
         src="../../../assets/icon-categories/{{ urgente.category }}.png"
         alt=""
       />
-      <p routerLink="/tache/{{ urgente.id }}">{{ urgente.content }}</p>
+      <p routerLink="/tache/{{ urgente.id }}">
+        {{ urgente.content }}
+      </p>
     </li>
   </ul>
   <h2 *ngIf="listTachesNoUrgent.length != 0">🌸 Tâches non urgentes</h2>
@@ -27,10 +35,12 @@
         />
       </p>
       <img
+        class="icon"
         src="../../../assets/icon-categories/{{ noUrgente.category }}.png"
         alt=""
       />
       <p routerLink="/tache/{{ noUrgente.id }}">{{ noUrgente.content }}</p>
     </li>
   </ul>
+  <button>Créer une tâche</button>
 </main>

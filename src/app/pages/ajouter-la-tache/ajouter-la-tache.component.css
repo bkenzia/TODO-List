@@ -102,3 +102,6 @@ textarea {
 .display-non {
   display: none;
 }
+.bg-move {
+  background: #e475f1;
+}

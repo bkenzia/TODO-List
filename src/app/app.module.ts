@@ -9,6 +9,7 @@ import { HommePageComponent } from './pages/homme-page/homme-page.component';
 import { AjouterLaTacheComponent } from './pages/ajouter-la-tache/ajouter-la-tache.component';
 import { FormsModule } from '@angular/forms';
 import { ListTachesComponent } from './pages/list-taches/list-taches.component';
+import { HistoriquePageComponent } from './pages/historique-page/historique-page.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ListTachesComponent } from './pages/list-taches/list-taches.component';
     HommePageComponent,
     AjouterLaTacheComponent,
     ListTachesComponent,
+    HistoriquePageComponent,
   ],
   imports: [
     BrowserModule,
