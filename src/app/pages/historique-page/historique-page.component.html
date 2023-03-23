@@ -1,0 +1,22 @@
+<main>
+  <h2>Historique des tâches :</h2>
+  <ul>
+    <li *ngFor="let tache of listTacheHistorique">
+      <p class="update" (click)="jinvalideTache(tache)">
+        <img
+          class="update-img"
+          src="../../../assets/icon-categories/check_icon.png"
+          alt=""
+        />
+      </p>
+      <img
+        class="icon"
+        src="../../../assets/icon-categories/{{ tache.category }}.png"
+        alt=""
+      />
+      <p>
+        {{ tache.content }}
+      </p>
+    </li>
+  </ul>
+</main>

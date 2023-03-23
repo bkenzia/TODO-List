@@ -1,6 +1,6 @@
 footer {
   background: #040722;
-  height: 100px;
+  height: 12.87vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@ a {
   width: 65.86px !important;
   height: 65.86px !important;
   border-radius: 50%;
-  background: #88e7a1;
+  background: #1d2038;
 
   position: relative;
 }
@@ -23,4 +23,13 @@ img {
   height: 30.63px;
   top: 25%;
   right: 25%;
+}
+.bg-yellow {
+  background-color: #f3d24f;
+}
+.bg-green {
+  background-color: #88e7a1;
+}
+.bg-violat {
+  background-color: #e475f1;
 }

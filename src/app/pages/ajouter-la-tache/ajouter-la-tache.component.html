@@ -1,0 +1,68 @@
+<main class="flex">
+  <div class="ajout-tache flex">
+    <h2>Sélectionnez votre catégorie* :</h2>
+    <div class="icon-categories flex">
+      <p
+        *ngFor="let item of categories"
+        (click)="getCategorie(item.categorie)"
+        [ngClass]="{
+          'bg-yellow':
+            this.tache.category === item.categorie ||
+            this.tacheFound?.category === item.categorie
+        }"
+      >
+        <img
+          src="../../../assets/icon-categories/{{ item.categorie }}.png"
+          alt=""
+        />
+      </p>
+    </div>
+    <h2>Quelle tâche avez vous à effectuer* ?</h2>
+    <textarea
+      [(ngModel)]="mytextarea"
+      cols="30"
+      rows="7"
+      placeholder="Exemple : Faire les courses"
+      (input)="getContent(mytextarea)"
+    ></textarea>
+
+    <div class="flex urgent-div">
+      <p
+        class="Urgent"
+        (click)="getUrgentTache()"
+        [ngClass]="{
+          'bg-move': tache.isUrgent == true || tacheFound?.isUrgent == true
+        }"
+      >
+        <img
+          src="../../../assets/icon-categories/check_icon.png"
+          alt=""
+          [ngClass]="{
+            'display-non':
+              (tache.isUrgent == false && tacheFound?.isUrgent == false) ||
+              (tache.isUrgent == false && tacheFound == null)
+          }"
+        />
+      </p>
+      <h2>La tâche est urgente ⚠️</h2>
+    </div>
+  </div>
+  <button
+    *ngIf="!this.tacheFound"
+    (click)="addTache(this.tache)"
+    [ngClass]="{
+      'bg-blue': this.tache.content != '' && this.tache.category != 'init'
+    }"
+  >
+    Valider ma tâche
+  </button>
+  <button
+    *ngIf="this.tacheFound"
+    (click)="addUpdateTache(this.tache)"
+    [ngClass]="{
+      'bg-blue': this.tache.content != '' && this.tache.category != 'init'
+    }"
+  >
+    Modifier ma tâche
+  </button>
+</main>

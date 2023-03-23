@@ -1,0 +1,51 @@
+main {
+  height: 74.13vh;
+  background: #040722;
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  padding-left: 26px;
+  padding-top: 37px;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* border-radius: 6px; */
+  background: #f3d24f;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+li {
+  display: flex;
+  gap: 15px;
+}
+
+.update {
+  width: 23px;
+  height: 23px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  position: relative;
+}
+.update-img {
+  position: absolute;
+  top: 22%;
+  left: 22%;
+}
+.icon {
+  object-fit: contain;
+}
