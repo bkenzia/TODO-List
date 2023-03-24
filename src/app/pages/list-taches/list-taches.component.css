@@ -1,12 +1,6 @@
 main {
   height: 74.13vh;
-  background: #040722;
-  font-family: "Quicksand";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  color: #ffffff;
+
   padding-left: 26px;
   padding-top: 37px;
   display: flex;
@@ -20,7 +14,6 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
-  /* border-radius: 6px; */
   background: #f3d24f;
 }
 .update {
@@ -44,13 +37,7 @@ li {
   display: flex;
   gap: 15px;
 }
-.display-none {
-  display: none;
-}
+
 .icon {
   object-fit: contain;
-}
-.contenu-tache {
-  width: 70%;
-  word-wrap: break-word;
 }

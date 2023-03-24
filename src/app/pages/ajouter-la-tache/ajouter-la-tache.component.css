@@ -3,18 +3,9 @@ main {
   align-items: center;
   gap: 20%;
   height: 78.13vh;
-  background: #040722;
-  font-family: "Quicksand";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  color: #ffffff;
 }
 .ajout-tache {
   padding-top: 4.76vh;
-  /* padding-bottom: 37%; */
-
   flex-direction: column;
   align-items: center;
   gap: 3.6vh;
@@ -49,10 +40,7 @@ textarea {
 }
 button {
   background: rgba(100, 167, 217, 0.5);
-  border-radius: 30px;
   text-align: center;
-  width: 248px;
-  height: 48px;
   color: rgba(255, 255, 255, 0.5);
   border: transparent;
 }
@@ -91,17 +79,4 @@ textarea {
 }
 .urgent-div {
   gap: 11px;
-}
-.bg-yellow {
-  background: #f3d24f;
-}
-.bg-blue {
-  background: #64a7d9;
-  color: white;
-}
-.display-non {
-  display: none;
-}
-.bg-move {
-  background: #e475f1;
 }

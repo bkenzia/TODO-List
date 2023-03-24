@@ -1,8 +1,5 @@
 main {
   height: 78.13vh;
-  background: #040722;
-  font-family: "Quicksand";
-  font-style: normal;
 }
 div {
   display: flex;
@@ -22,10 +19,5 @@ button {
   color: #ffffff;
 }
 button {
-  width: 248px;
-  height: 48px;
-  left: 74px;
-  top: 424px;
   background: #64a7d9;
-  border-radius: 30px;
 }
