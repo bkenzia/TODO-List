@@ -1,0 +1,8 @@
+<main>
+  <div>
+    <h2 *ngIf="textCreation">{{ textCreation }}</h2>
+    <h2 *ngIf="!textCreation">Votre historique est vide 😬</h2>
+
+    <button (click)="ajouterTache()">Créer une tâche</button>
+  </div>
+</main>

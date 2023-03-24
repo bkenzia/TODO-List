@@ -80,3 +80,14 @@ textarea {
 .urgent-div {
   gap: 11px;
 }
+.bg-yellow {
+  background: #f3d24f;
+}
+.bg-blue {
+  background: #64a7d9;
+  color: white;
+}
+
+.bg-move {
+  background: #e475f1;
+}

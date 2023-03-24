@@ -26,7 +26,7 @@ export class HistoriquePageComponent {
         }
       });
       if (this.listTacheHistorique.length == 0) {
-        this.router.navigate(['']);
+        this.router.navigate(['creation-tache']);
       }
     }
   }
