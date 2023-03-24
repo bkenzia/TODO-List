@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreationTacheComponent } from './components/creation-tache/creation-tache.component';
 import { AjouterLaTacheComponent } from './pages/ajouter-la-tache/ajouter-la-tache.component';
 import { HistoriquePageComponent } from './pages/historique-page/historique-page.component';
 import { HommePageComponent } from './pages/homme-page/homme-page.component';
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'historique',
     component: HistoriquePageComponent,
+  },
+  {
+    path: 'creation-tache',
+    component: CreationTacheComponent,
   },
 ];
 

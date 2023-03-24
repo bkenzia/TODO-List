@@ -11,6 +11,7 @@ export class HommePageComponent {
   listTaches: ITodo[] = [];
   listTachesUrgent: ITodo[] = [];
   listTachesNoUrgent: ITodo[] = [];
+  textCreatTache: string = 'Aucune tâche pour le moment 🙌';
   constructor(private router: Router) {}
   ngOnInit() {
     this.getTaches();

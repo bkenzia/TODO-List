@@ -1,0 +1,23 @@
+main {
+  height: 78.13vh;
+}
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  gap: 4.118vh;
+}
+
+h2,
+button {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+button {
+  background: #64a7d9;
+}

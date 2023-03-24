@@ -1,4 +1,4 @@
-<main
+<!-- <main
   *ngIf="
     this.listTachesUrgent.length == 0 &&
     this.listTachesNoUrgent.length == 0 &&
@@ -10,7 +10,15 @@
 
     <button (click)="ajouterTache()">Créer une tâche</button>
   </div>
-</main>
+</main> -->
+<app-creation-tache
+  *ngIf="
+    this.listTachesUrgent.length == 0 &&
+    this.listTachesNoUrgent.length == 0 &&
+    listTaches.length == 0
+  "
+  [textCreation]="textCreatTache"
+></app-creation-tache>
 <app-list-taches
   *ngIf="this.listTachesUrgent.length != 0 || listTachesNoUrgent.length != 0"
 ></app-list-taches>

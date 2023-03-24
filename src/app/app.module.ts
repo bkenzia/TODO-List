@@ -10,6 +10,7 @@ import { AjouterLaTacheComponent } from './pages/ajouter-la-tache/ajouter-la-tac
 import { FormsModule } from '@angular/forms';
 import { ListTachesComponent } from './pages/list-taches/list-taches.component';
 import { HistoriquePageComponent } from './pages/historique-page/historique-page.component';
+import { CreationTacheComponent } from './components/creation-tache/creation-tache.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HistoriquePageComponent } from './pages/historique-page/historique-page
     AjouterLaTacheComponent,
     ListTachesComponent,
     HistoriquePageComponent,
+    CreationTacheComponent,
   ],
   imports: [
     BrowserModule,
