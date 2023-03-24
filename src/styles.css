@@ -129,3 +129,42 @@ hr {
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Lato&family=Nunito+Sans:wght@300;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&family=Quicksand:wght@700&family=Roboto:wght@400;700&display=swap");
+/* body {
+  height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} */
+main {
+  background: #040722;
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  /* flex: 1; */
+}
+.contenu-tache {
+  width: 70%;
+  word-wrap: break-word;
+}
+.display-none {
+  display: none;
+}
+button {
+  width: 248px;
+  height: 48px;
+  border-radius: 30px;
+}
+.bg-yellow {
+  background: #f3d24f;
+}
+.bg-blue {
+  background: #64a7d9;
+  color: white;
+}
+
+.bg-move {
+  background: #e475f1;
+}
