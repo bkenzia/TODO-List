@@ -22,7 +22,13 @@
         src="../../../assets/icon-categories/{{ urgente.category }}.png"
         alt=""
       />
-      <p routerLink="/tache/{{ urgente.id }}" class="contenu-tache">
+      <p
+        routerLink="/tache/{{ urgente.id }}"
+        class="contenu-tache"
+        [ngClass]="{
+          'display-none': urgente.doneDate != null
+        }"
+      >
         {{ urgente.content }}
       </p>
     </li>

@@ -60,7 +60,9 @@
     *ngIf="this.tacheFound"
     (click)="addUpdateTache(this.tache)"
     [ngClass]="{
-      'bg-blue': this.tache.content != '' && this.tache.category != 'init'
+      'bg-blue':
+        this.mytextarea != '' ||
+        (this.tache.content != '' && this.tache.category != 'init')
     }"
   >
     Modifier ma tâche
