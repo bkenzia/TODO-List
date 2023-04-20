@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ITodo } from 'src/app/mocks/taches.mock';
+import { LocaleStorageTachesService } from 'src/app/services/localeStorage-taches/locale-storage-taches.service';
 
 @Component({
   selector: 'app-list-taches',
@@ -11,7 +12,12 @@ export class ListTachesComponent {
   listTachesUrgent: ITodo[] = [];
   listTachesNoUrgent: ITodo[] = [];
   validateTaches: ITodo[] = [];
-  constructor(private router: Router, private activatedRout: ActivatedRoute) {}
+
+  constructor(
+    private router: Router,
+    private activatedRout: ActivatedRoute,
+    private localeStorageTachesService: LocaleStorageTachesService
+  ) {}
   ngOnInit() {
     this.activatedRout.params.subscribe((routeParams) => {
       this.getTaches();
@@ -41,21 +47,14 @@ export class ListTachesComponent {
       this.router.navigate(['']);
     }
   }
-  private createTaches() {
-    const newTaches: [] = [];
-    const stringifyTaches = JSON.stringify(newTaches);
-    localStorage.setItem('taches', stringifyTaches);
-  }
-  private savetaches(listTaches: ITodo[]) {
-    localStorage.setItem('taches', JSON.stringify(listTaches));
-  }
+
   public getListTaches(): ITodo[] {
     const listTaches = localStorage.getItem('taches');
 
     if (listTaches) {
       return JSON.parse(listTaches);
     } else {
-      this.createTaches();
+      this.localeStorageTachesService.createTaches();
       return this.getListTaches();
     }
   }
@@ -68,7 +67,7 @@ export class ListTachesComponent {
       );
 
       tacheFound.doneDate = new Date().toLocaleDateString();
-
+      console.log(tacheFound);
       this.validateTaches.push(tacheFound);
       const listTaches = this.getListTaches();
       listTaches.forEach((element) => {
@@ -76,7 +75,9 @@ export class ListTachesComponent {
           element.doneDate = tacheFound.doneDate;
         }
       });
-      this.savetaches(listTaches);
+      this.localeStorageTachesService.savetaches(listTaches);
+
+      location.reload();
     }
   }
 }

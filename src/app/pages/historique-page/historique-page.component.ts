@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ITodo } from 'src/app/mocks/taches.mock';
+import { LocaleStorageTachesService } from 'src/app/services/localeStorage-taches/locale-storage-taches.service';
 
 @Component({
   selector: 'app-historique-page',
@@ -9,7 +10,10 @@ import { ITodo } from 'src/app/mocks/taches.mock';
 })
 export class HistoriquePageComponent {
   listTacheHistorique: ITodo[] = [];
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private localeStorageTachesService: LocaleStorageTachesService
+  ) {}
   ngOnInit() {
     this.getValidateTaches();
   }
@@ -22,7 +26,7 @@ export class HistoriquePageComponent {
 
       listTaches.forEach((element: ITodo) => {
         if (element.doneDate != null) {
-          this.listTacheHistorique.push(element);
+          this.listTacheHistorique.unshift(element);
         }
       });
       if (this.listTacheHistorique.length == 0) {
@@ -30,31 +34,15 @@ export class HistoriquePageComponent {
       }
     }
   }
-  private createTaches() {
-    const newTaches: [] = [];
-    const stringifyTaches = JSON.stringify(newTaches);
-    localStorage.setItem('taches', stringifyTaches);
-  }
-  private savetaches(listTaches: ITodo[]) {
-    localStorage.setItem('taches', JSON.stringify(listTaches));
-  }
-  public getTaches(): ITodo[] {
-    const listTaches = localStorage.getItem('taches');
 
-    if (listTaches) {
-      return JSON.parse(listTaches);
-    } else {
-      this.createTaches();
-      return this.getTaches();
-    }
-  }
   jinvalideTache(tache: ITodo) {
-    const taches = this.getTaches();
+    const taches = this.localeStorageTachesService.getTaches();
     taches.forEach((element) => {
       if (tache.id == element.id) {
         element.doneDate = null;
       }
     });
-    this.savetaches(taches);
+    this.localeStorageTachesService.savetaches(taches);
+    window.location.reload();
   }
 }

@@ -43,3 +43,6 @@ li {
 .icon {
   object-fit: contain;
 }
+.displ-none {
+  display: none;
+}

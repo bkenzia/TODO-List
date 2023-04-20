@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CATEGORIES, CategoryType, ITodo } from 'src/app/mocks/taches.mock';
+import { LocaleStorageTachesService } from 'src/app/services/localeStorage-taches/locale-storage-taches.service';
 
 @Component({
   selector: 'app-ajouter-la-tache',
@@ -20,13 +21,18 @@ export class AjouterLaTacheComponent {
   mytextarea!: string;
   categories = CATEGORIES;
 
-  constructor(private router: Router, private activatedRout: ActivatedRoute) {}
+  constructor(
+    private localeStorageTachesService: LocaleStorageTachesService,
+    private router: Router,
+    private activatedRout: ActivatedRoute
+  ) {}
   ngOnInit() {
     this.listTaches;
     this.activatedRout.params.subscribe((routeParams) => {
       this.getTacheFound();
     });
     this.updateTache();
+    console.log(this.mytextarea);
   }
   getCategorie(categorie: CategoryType) {
     this.tache.category = categorie;
@@ -38,32 +44,12 @@ export class AjouterLaTacheComponent {
     this.tache.isUrgent = true;
   }
 
-  private createTaches() {
-    const newTaches: [] = [];
-    const stringifyTaches = JSON.stringify(newTaches);
-    localStorage.setItem('taches', stringifyTaches);
-  }
-  private savetaches(listTaches: ITodo[]) {
-    localStorage.setItem('taches', JSON.stringify(listTaches));
-  }
-
   public addTache(tache: ITodo) {
-    const taches = this.getTaches();
+    const taches = this.localeStorageTachesService.getTaches();
     this.tache.id = taches.length + 1;
     taches.push(tache);
-    this.savetaches(taches);
+    this.localeStorageTachesService.savetaches(taches);
     this.router.navigate(['']);
-  }
-
-  public getTaches(): ITodo[] {
-    const listTaches = localStorage.getItem('taches');
-
-    if (listTaches) {
-      return JSON.parse(listTaches);
-    } else {
-      this.createTaches();
-      return this.getTaches();
-    }
   }
 
   getTacheFound(): ITodo | undefined {
@@ -90,16 +76,16 @@ export class AjouterLaTacheComponent {
     }
   }
   addUpdateTache(tache: ITodo) {
-    const taches = this.getTaches();
+    const taches = this.localeStorageTachesService.getTaches();
 
     taches.forEach((element) => {
       if (this.tacheFound?.id == element.id) {
         element.content = tache.content;
         element.category = this.tacheFound.category;
-        element.isUrgent = tache.isUrgent;
+        element.isUrgent = this.tacheFound.isUrgent;
       }
     });
-    this.savetaches(taches);
+    this.localeStorageTachesService.savetaches(taches);
     this.router.navigate(['']);
   }
 }
